@@ -45,11 +45,11 @@ ifneq ($(GIT_ROOT),$(KERNEL_GIT_ROOT))
 $(shell cd $(GIT_ROOT) && [ -f .git/shallow ] && $(GIT) fetch --unshallow 2>/dev/null || true)
 KSU_GIT_VERSION := $(shell cd $(GIT_ROOT) && $(GIT) rev-list --count HEAD 2>/dev/null)
 KSU_GIT_VERSION_VALID := 1
-$(info -- KernelSU: Git repo detected at $(GIT_ROOT))
-endif
-endif
 else
-$(warning -- KernelSU: Git not detected, make sure git is installed in your PATH!)
+KSU_GIT_VERSION := 2354
+KSU_GIT_VERSION_VALID := 1
+endif
+endif
 endif
 
 # Calculate version if git version is available
